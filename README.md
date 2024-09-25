@@ -25,7 +25,7 @@ DB_NAME=almacen
 DB_DIALECT=mysql
 DB_TIMEZONE=-05:00
 ```
-2. Ejecutar el siguiente script de creacion de tablas [Script Creacion tablas](script.sql)
+2. Ejecutar el siguiente script de creacion de tablas [Script Creacion tablas](sql/script.sql)
 3. Continuar con los pasos para desplegar en ambiente local
 4. El empaquetado se genera en la ruta /dist/bundle.js que podra ser desplegado en la nube posteriormente.
 

@@ -8,6 +8,19 @@ module.exports = (repositories) => {
   const articleService = new ArticleService(repositories);
   const articleValidation = new ArticleValidation();
 
+/**
+ * @swagger
+ * /api/articles:
+ *   post:
+ *     summary: Crear un articulo
+ *     tags: [Articulos]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Articulo'
+ */
   router.post(
     '/',
     articleValidation.validateCreate,
@@ -21,6 +34,19 @@ module.exports = (repositories) => {
     }
   );
 
+/**
+ * @swagger
+ * /api/articles:
+ *   put:
+ *     summary: Modificar un Articulo
+ *     tags: [Articulos]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Articulo'
+ */
   router.put(
     '/:id',
     articleValidation.validateUpdate,
@@ -35,6 +61,22 @@ module.exports = (repositories) => {
     }
   );
 
+/**
+ * @swagger
+ * /api/articles:
+ *   get:
+ *     summary: Obtener todos los articulos
+ *     tags: [Articulos]
+ *     responses:
+ *       200:
+ *         description: Lista de todos los articulos
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Articulo'
+ */
   router.get(
     '/',
     async (req, res, next) => {

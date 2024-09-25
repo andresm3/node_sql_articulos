@@ -4,6 +4,8 @@ const {
   statusCode,
   statusResponse,
 } = require('./config/httpStatusCodes');
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpec = require('./config/swagger');
 const api = require('./api');
 const bootstrap = require('./config/bootstrap');
 const appContext = bootstrap();
@@ -13,6 +15,8 @@ const app = express();
 app.use(express.json());
 
 app.use('/api', api(appContext));
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use((req, res, next) => {
   return res
@@ -36,5 +40,6 @@ app.use((err, req, res, _next) => {
       message: err.message,
     });
 });
+
 
 module.exports = app;
